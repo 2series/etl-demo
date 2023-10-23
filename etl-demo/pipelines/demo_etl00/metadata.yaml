@@ -1,0 +1,76 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - morning_flower
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: dta load
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: dta_load
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - withered_wildflower
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: morning flower
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - dta_load
+  uuid: morning_flower
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: duckdb
+    data_provider_table: magic_duck.restaurant_user_transactions
+    dbt: {}
+    export_write_policy: append
+    limit: 1000
+    use_raw_sql: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: withered wildflower
+  retry_config: null
+  status: failed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - morning_flower
+  uuid: withered_wildflower
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2023-10-23 08:20:19.039600+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: demo etl00
+notification_config: {}
+retry_config: {}
+run_pipeline_in_one_process: false
+spark_config: {}
+tags: []
+type: python
+updated_at: '2023-10-23 08:34:05'
+uuid: demo_etl00
+widgets: []
